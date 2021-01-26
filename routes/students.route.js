@@ -11,4 +11,19 @@ student.get('/',async(req, res)=> {
     })
 });
 
+student.post('/', async (req, res) => {
+    let { body } = req
+    let status = 201
+    let ok = await ctrStundents.postStundent(body)
+    let msg = 'New student added'
+    if(ok === false) {
+        status= 401,
+        msg= 'Some data invalid'
+    }
+    return res.status(status).send({
+        status:status,
+        msg: msg
+    })
+})
+
 module.exports = student;
