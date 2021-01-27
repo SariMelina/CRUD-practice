@@ -11,6 +11,16 @@ student.get('/',async(req, res)=> {
     })
 });
 
+student.get('/:id', async(req,res)=> {
+    const data = await ctrStundents.getStudent(req.params.id)
+    console.log(data);
+    return res.status(200).send({
+        status:200,
+        msg:"Success",
+        data: data    })
+    
+})
+
 student.post('/', async (req, res) => {
     let { body } = req
     let status = 201
