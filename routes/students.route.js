@@ -13,11 +13,11 @@ student.get('/',async(req, res)=> {
 
 student.get('/:id', async(req,res)=> {
     const data = await ctrStundents.getStudent(req.params.id)
-    console.log(data);
     return res.status(200).send({
         status:200,
         msg:"Success",
-        data: data    })
+        data: data    
+    })
     
 })
 
@@ -37,9 +37,9 @@ student.post('/', async (req, res) => {
 })
 
 student.put('/:id', async (req, res)=>{
-    let { body } = req
+    let { body, params } = req
     let status = 201
-    let ok = await ctrStundents.updateStudent(req.params.id, body)
+    let ok = await ctrStundents.updateStudent(params.id, body)
     let msg = 'Success update'
     if(ok === false) {
         status= 401,
