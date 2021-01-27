@@ -56,7 +56,6 @@ student.delete('/:id',validate, async(req, res)=> {
     let { params } = req
     let status = 200
     let ok = await ctrStundents.deleteStudent(params.id)
-    console.log(ok);
     let msg = 'Student deleted '
     if(ok === false){
         status = 400
