@@ -51,4 +51,19 @@ student.put('/:id', async (req, res)=>{
     })
 })
 
+student.delete('/:id', async(req, res)=> {
+    let { params } = req
+    let status = 200
+    let ok = await ctrStundents.deleteStudent(params.id)
+    let msg = 'Student deleted '
+    if(ok === false){
+        status = 400
+        msg = 'The id doesnt exist'
+    }
+    return res.status(status).send({
+        status:status,
+        msg:msg
+    })
+})
+
 module.exports = student;
