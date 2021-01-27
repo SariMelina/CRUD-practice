@@ -5,6 +5,11 @@ async function getStudents() {
     return data
 }
 
+async function getStudent(id){
+    const data = await exec.execute(`SELECT * FROM students WHERE id = ${id}`)
+    return data
+}
+
 async function postStudent(body) {
     const data = await exec.execute(`INSERT INTO students VALUES (default, '${body.name}','${body.gender}','${body.phone}','${body.address}', ${body.age})`)    
     return data
@@ -12,5 +17,6 @@ async function postStudent(body) {
 
 module.exports = {
     getStudents,
+    getStudent,
     postStudent
 }
