@@ -20,9 +20,15 @@ async function updateStudent(id, body){
     return data
 }
 
+async function deleteStudent(id){
+    const data = await exec.execute(`DELETE FROM students WHERE id=${id}`)
+    return data
+}
+
 module.exports = {
     getStudents,
     getStudent,
     postStudent,
-    updateStudent
+    updateStudent,
+    deleteStudent
 }
