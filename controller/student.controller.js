@@ -20,16 +20,27 @@ async function postStundent(body){
     return isOk
 }
 
+async function updateStudent(id, body){
+    let isOk= false
+    let ok =  validate(body)
+    if(ok){
+        isOk = true
+        await services.updateStudent(id,body)
+    }
+    return isOk
+}
+
 function validate(body){
     let ok = false
     if(body && typeof body === 'object' && Object.keys(body).length > 0){
         if(body.hasOwnProperty('name')&&body.hasOwnProperty('phone')&&body.hasOwnProperty('gender')){            
-            if(validateName(body.name) && validatePhone(body.phone) && validateGender(data.gender)){
+            if(validateName(body.name) && validatePhone(body.phone) && validateGender(body.gender)){
                 ok = true
-                console.log("Successful registration");
+                console.log("Successful");
             }
         }
     }
+    
     return ok
 }
 
@@ -66,5 +77,6 @@ function validateGender (data) {
 module.exports = {
     getStudents,
     getStudent,
-    postStundent
+    postStundent,
+    updateStudent
 }
