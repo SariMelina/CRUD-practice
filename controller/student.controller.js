@@ -1,4 +1,5 @@
 const services = require('../services/students.service.js')
+const validations = require('./validations.controller.js')
 
 async function getStudents(){
     const data = await services.getStudents()
@@ -34,42 +35,11 @@ function validate(body){
     let ok = false
     if(body && typeof body === 'object' && Object.keys(body).length > 0){
         if(body.hasOwnProperty('name')&&body.hasOwnProperty('phone')&&body.hasOwnProperty('gender')){            
-            if(validateName(body.name) && validatePhone(body.phone) && validateGender(body.gender)){
+            if(validations.validateName(body.name) && validations.validatePhone(body.phone) && validations.validateGender(body.gender)){
                 ok = true
                 console.log("Successful");
             }
         }
-    }
-    
-    return ok
-}
-
-function validateName (name) {
-    let ok = false
-    if(name !== '' && name.length > 0){
-        ok = true
-    }else{
-        console.log("Error with the name");
-    }
-    return ok
-}
-
-function validatePhone (data) {
-    let ok = false
-    if(data !== '' && data.length === 10){
-        ok = true
-    }else{
-        console.log("Error with the phone");
-    }
-    return ok
-}
-
-function validateGender (data) {
-    let ok = false
-    if(data !== '' && data.length === 1 && (data === 'F' || data === 'M')){
-        ok = true
-    }else{
-        console.log("Error with the gender");
     }
     return ok
 }
