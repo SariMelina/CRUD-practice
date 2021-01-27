@@ -5,6 +5,11 @@ async function getStudents(){
     return data
 }
 
+async function getStudent(id){
+    const data = await services.getStudent(id)
+    return data
+}
+
 async function postStundent(body){
     let isOk= false
     let ok =  validate(body)
@@ -60,5 +65,6 @@ function validateGender (data) {
 
 module.exports = {
     getStudents,
+    getStudent,
     postStundent
 }
