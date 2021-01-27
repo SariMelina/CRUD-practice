@@ -31,6 +31,11 @@ async function updateStudent(id, body){
     return isOk
 }
 
+async function deleteStudent (id) {
+    const data = await services.deleteStudent(id)
+    return data
+}
+
 function validate(body){
     let ok = false
     if(body && typeof body === 'object' && Object.keys(body).length > 0){
@@ -48,5 +53,6 @@ module.exports = {
     getStudents,
     getStudent,
     postStundent,
-    updateStudent
+    updateStudent,
+    deleteStudent
 }
