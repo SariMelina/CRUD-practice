@@ -15,8 +15,14 @@ async function postStudent(body) {
     return data
 }
 
+async function updateStudent(id, body){
+    const data = await exec.execute(`UPDATE students SET name='${body.name}',gender='${body.gender}',phone='${body.phone}',address='${body.address}',age= ${body.age} WHERE id=${id}`)
+    return data
+}
+
 module.exports = {
     getStudents,
     getStudent,
-    postStudent
+    postStudent,
+    updateStudent
 }
