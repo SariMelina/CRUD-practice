@@ -36,4 +36,19 @@ student.post('/', async (req, res) => {
     })
 })
 
+student.put('/:id', async (req, res)=>{
+    let { body } = req
+    let status = 201
+    let ok = await ctrStundents.updateStudent(req.params.id, body)
+    let msg = 'Success update'
+    if(ok === false) {
+        status= 401,
+        msg= 'Some data invalid'
+    }
+    return res.status(status).send({
+        status:status,
+        msg: msg
+    })
+})
+
 module.exports = student;
