@@ -1,7 +1,12 @@
 const { getConnection } = require('./connection/connection')
 
- function execute (sql){
-    return getConnection().execute(sql)
+ async function execute (sql){
+    try{
+        return (await getConnection()).execute(sql)
+    }catch(err){
+        console.log(err);
+    }
+    
 }
 
 module.exports = {
