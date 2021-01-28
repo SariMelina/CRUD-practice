@@ -21,3 +21,5 @@ conec.connetion().then(msg => {
 }).catch(err => {
     console.log("Problem with the connection");
 })
+
+module.exports = app;
